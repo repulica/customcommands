@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "customcommands",
+  "version": "${version}",
+  "name": "custom commands",
+  "description": "custom command aliases for vanillish servers written in kdl",
+  "authors": [
+    "repulica"
+  ],
+  "contact": {},
+  "license": "MPL-2.0",
+  "icon": "assets/customcommands/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "repulica.customcommands.CustomCommands"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.12.4",
+    "fabric": "*",
+    "minecraft": "1.17.1",
+    "staticdata": "*"
+  }
+}
