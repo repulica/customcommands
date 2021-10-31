@@ -4,6 +4,8 @@ custom command aliases for vanillish servers written in [kdl](https://kdl.dev)
 
 custom commands lets server owners write a file at `static_data/commands.kdl` to add aliases or shorthands for special commands or triggers
 
+currently requires adding a built jar of [kdl4j 0.1.0](https://github.com/hkolbeck/kdl4j/packages/582497) at `libs/kdl4j-0.1.0.jar` because github package registry is broken
+
 current supported nodes:
 - `literal <name>` - keyword command node
 - `requires [requirements]` - requirements for parent node, properties determine requirements:
