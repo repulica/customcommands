@@ -11,6 +11,7 @@ group = project.maven_group
 repositories {
     flatDir { dirs "libs" }
     maven { url "https://server.bbkr.space/artifactory/libs-release" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 dependencies {
@@ -22,8 +23,10 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "io.github.cottonmc:StaticData:1.1.2"
+    modImplementation "me.lucko:fabric-permissions-api:0.1-SNAPSHOT"
     implementation name: "kdl4j-0.1.0"
     include "io.github.cottonmc:StaticData:1.1.2"
+    include "me.lucko:fabric-permissions-api:0.1-SNAPSHOT"
     include name: "kdl4j-0.1.0"
 
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.

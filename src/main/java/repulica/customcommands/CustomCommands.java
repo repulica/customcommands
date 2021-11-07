@@ -10,6 +10,7 @@ import dev.hbeck.kdl.objects.*;
 import dev.hbeck.kdl.parse.KDLParser;
 import io.github.cottonmc.staticdata.StaticData;
 import io.github.cottonmc.staticdata.StaticDataItem;
+import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.minecraft.command.argument.BlockStateArgumentType;
@@ -90,12 +91,16 @@ public class CustomCommands implements ModInitializer {
 						for (String key : props.keySet()) {
 							KDLValue val = props.get(key);
 							//TODO: other common requirements from permissions libs or stuff
+							//fabric permissions api added but idk if there are other 927s
 							switch (key) {
-								case "permissionLevel":
+								case "permissionLevel": //dedprecated
+								case "opLevel":
 									KDLNumber trueVal = val.getAsNumber().orElse(KDLNumber.from(Integer.MAX_VALUE));
 									int processedVal = trueVal.getAsBigDecimal().intValue();
-									reqs = source -> source.hasPermissionLevel(processedVal);
+									reqs = reqs.and(source -> source.hasPermissionLevel(processedVal));
 									break;
+								case "permission":
+									reqs = reqs.and(Permissions.require(val.getAsString().getValue()));
 							}
 						}
 						builder.requires(reqs);
